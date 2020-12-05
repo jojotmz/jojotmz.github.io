@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Experiment 2 Tereh/Tomazoni</title>
+  <link rel="apple-touch-icon" href="icon.png">
+  <meta name="theme-color" content="#fafafa">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+<div id="data">
+  What keyboard layout are you using (USI macbooks ship with US international)? <input id="kb" type="text"> <br>
+  How much programming experience do you have?
+  <select id="exp">
+    <option value="5">Multiple years in industry</option>
+    <option value="4">Recently graduated</option>
+    <option value="3">At least 2 years in university</option>
+    <option value="2">Recently enrolled in university</option>
+    <option value="1">Self-study or high-school</option>
+    <option value="0">None</option>
+  </select> <br>
+  Which style do you use primarily?
+  <select id="pref">
+    <option value="camel">camelCase</option>
+    <option value="both">both equally (or neither at all)</option>
+    <option value="kebab">kebab-case</option>
+  </select>
+  <button id="data-ok">OK</button>
+</div>
+
+<div id="popup" class="">
+  <div id="popup-box">
+    <div id="popup-text">
+      test
+    </div>
+    <button id="ok" autofocus>OK</button>
+  </div>
+</div>
+
+<pre>
+  public static String <field hint="generate hash"></field>(String input) throws <field hint="no such algorithm exception"></field> {
+      <field hint="message digest"></field> objSHA = <field hint="message digest"></field>.<field hint="get instance"></field>("SHA-256");
+      byte[] bytSHA = objSHA.digest(input.<field hint="get bytes"></field>());
+      <field hint="big integer"></field> <field hint="int number"></field> = new <field hint="big integer"></field>(1, bytSHA);
+      String <field hint="str hash code"></field> = <field hint="int number"></field>.<field hint="to string"></field>(16);
+      // pad with 0 if the hexa digits are less then 64.
+      while (<field hint="str hash code"></field>.length() < 64) {
+      <field hint="str hash code"></field> = "0" + <field hint="str hash code"></field>;
+      }
+      return <field hint="str hash code"></field>;
+  }
+
+<input style="max-width: 0; max-height: 0; padding: 0; border: 0">
+</pre>
+
+
+<!-- script type="module" src="main.js"></script -->
+<script>
+  // browsers get CORS problems when you try to include local files so we paste this here in the html.
+  let camelCaseFirst = Math.random() < 0.5;
+
+  //format: {field: "arrayList", time: 3000ms, correct: true}
+  let camelCase = [];
+  let kebabCase = [];
+
+  let resets = [];
+  let resetAll = () => resets.forEach((v) => v());
+  let numFields = 0;
+
+  let popup = (s) => {
+    document.querySelector('#popup-text').textContent = s;
+    document.querySelector('#popup').classList.remove('hidden');
+    document.querySelector('#ok').focus();
+  }
+
+  let state = 0
+  let changeCase = () => {
+    if (state === 0 || state === 1) {
+      resetAll();
+      let word;
+      if (camelCaseFirst) {
+        word = ['camelCase', 'kebab-case'][state];
+      } else {
+        word = ['kebab-case', 'camelCase'][state];
+      }
+      popup(word + " now");
+      state++;
+    } else {
+      done();
+    }
+  }
+
+  let done = () => {
+    popup("done");
+    console.log({camelCaseFirst: camelCaseFirst})
+    console.log(camelCase);
+    console.log(kebabCase);
+
+    let id = Math.random().toString(36).substring(2, 15);
+    let csv = "id, keyboard, experience, preference, order, correct answer, time, correctness\n"
+    for (let field of camelCase) {
+      csv += `${id}, ${personalData.kb}, ${personalData.exp}, ${personalData.preference}, ` +
+             `${camelCaseFirst ? 'camel first' : 'kebab first'}, ${field.field}, ` +
+             `${field.time}, ${field.correct}\n`;
+    }
+    for (let field of kebabCase) {
+      csv += `${id}, ${personalData.kb}, ${personalData.exp}, ${personalData.preference}, ` +
+             `${camelCaseFirst ? 'camel first' : 'kebab first'}, ${field.field}, ` +
+             `${field.time}, ${field.correct}\n`;
+    }
+    let iframe = document.createElement('iframe');
+    iframe.src = 'data:application/octet-stream,' + encodeURIComponent(csv);
+    document.body.append(iframe);
+    iframe.style.visibility = 'hidden';
+  }
+
+  popup("practice");
+  document.querySelector('#ok').addEventListener('click', () => {
+    document.querySelector('#popup').classList.add('hidden');
+  })
+
+  let personalData = {};
+
+  document.querySelector('#data-ok').addEventListener('click', () => {
+    personalData.kb = document.querySelector('#kb').value;
+    personalData.exp = document.querySelector('#exp').value;
+    personalData.preference = document.querySelector('#pref').value;
+    document.querySelector('#data').classList.add('hidden');
+  })
+
+  document.querySelectorAll('field').forEach(f => {
+    numFields++;
+    let field = document.createElement('span');
+
+    let hint = f.getAttribute('hint');
+    field.className = 'field';
+    field.contentEditable = 'true';
+    field.setAttribute('placeholder', hint);
+    f.insertAdjacentElement('afterend', field);
+    f.remove();
+    let start = 0;
+    let end = 0;
+    let correct;
+    field.addEventListener('focusout', () => {
+      if (field.textContent !== '') {
+        field.contentEditable = 'false';
+        field.classList.remove('field');
+        end = performance.now();
+        let answer;
+        let currentIsCamelcase = (state === 1 && camelCaseFirst) || (state === 2 && !camelCaseFirst)
+        if (currentIsCamelcase) {
+          answer = hint.split(' ').map((s, i) => {
+            if (i === 0) return s;
+            return s.split('').map((c, i) => {
+              if (i !== 0) return c;
+              return c.toUpperCase();
+            }).join('');
+          }).join('');
+        } else {
+          answer = hint.split(' ').join('-');
+        }
+        correct = field.textContent === answer;
+        if (state !== 0) {
+          if (currentIsCamelcase) {
+            camelCase.push({field: answer, time: end - start, correct: correct});
+          } else {
+            kebabCase.push({field: answer, time: end - start, correct: correct});
+          }
+        }
+        numFields--;
+        if (numFields === 0) {
+          changeCase();
+        }
+      }
+    });
+    field.addEventListener('oninput', () => {
+      if (start === 0) start = performance.now();
+    });
+
+    let reset = () => {
+      field.textContent = '';
+      field.contentEditable = 'true';
+      field.classList.add('field');
+      numFields++;
+    }
+    resets.push(reset);
+  });
+</script>
+</body>
+</html>

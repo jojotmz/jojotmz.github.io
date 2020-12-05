@@ -1,0 +1,56 @@
+.field {
+    border: solid 1px #999999;
+    border-radius: 5px;
+    min-width: 4em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+[contentEditable=true]:empty:before {
+    content:attr(placeholder);
+    color:grey;
+    font-style:italic;
+}
+
+#popup {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#popup.hidden, #data.hidden {
+    display: none;
+}
+
+#data {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 10;
+}
+
+#popup-box {
+    margin: auto;
+    background: white;
+    width: 50%;
+    border-radius: 8px;
+    padding: 1em;
+}
+
+#popup-text {
+    text-align: center;
+}
+
+#ok {
+    margin: auto;
+    display: block;
+}
