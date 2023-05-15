@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<title>Page 1</title>
 </head>
 <body>
@@ -13,7 +15,7 @@
 <script>
     function checkInput() {
         var userInput = document.getElementById("inputBox").value;
-        if (userInput === "Austin-kun") {
+        if (userInput === "Austin-kun" || userInput === "sim") {
             window.location.href = "page2.html";
         } else {
             window.location.href = "page3.html";
