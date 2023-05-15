@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Page 2</title>
+	<script>
+        function scramble(str) {
+            let arr = str.split('');
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr.join('');
+        }
+        function unscramble() {
+            // set the message to display
+            let message = "Hello, world!";
+
+            // display the message to the user
+            document.write("1. Comer pinhão e passar frio <br>\n" +
+                "\t2. Aquelas que vendem com produtos de produção de regiōes locais <br>\n" +
+                "\t3. Macrovita <br>\n" +
+                "\t4. Urupema ou Sao Joaquin. Mas descer pro Rio Grande é melhor, tem Gramado e Aparados da Serra. (e o Alex) <br>\n" +
+                "\t5. Fotos <br>");
+        }
+        window.onload = function() {
+            let messageElem = document.getElementById("message");
+            let initialText = messageElem.textContent;
+            let scrambledText = scramble(initialText);
+            messageElem.textContent = scrambledText;
+        }
+	</script>
+</head>
+<body>
+<p id="message">1. Comer pinhão e passar frio <br>
+	2. Aquelas que vendem com produtos de produção de regiōes locais <br>
+	3. Macrovita <br>
+	4. Urupema ou Sao Joaquin. Mas descer pro Rio Grande é melhor, tem Gramado e Aparados da Serra. <br>
+	5. Fotos <br>
+</p>
+<button onclick="unscramble()">Sou Gay</button>
+</body>
+</html>
