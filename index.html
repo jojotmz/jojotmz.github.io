@@ -6,22 +6,54 @@
 	<title>Index</title>
 </head>
 <body>
-<div style="text-align:center;">
-	<label for="inputBox">?emon ues o lauq:</label><br>
-	<input type="text" id="inputBox"><br><br>
-	<button onclick="checkInput()">Submit</button>
-</div>
+    <title>Personal Information</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 100;
+        }
 
-<script>
-    function checkInput() {
-        var userInput = document.getElementById("inputBox").value;
-        if (userInput === "Austin-kun" || userInput === "sim") {
-            window.location.href = "page2.html";
-        } else {
-            window.location.href = "page3.html";
+        .container {
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+            animation: glowing 2s ease-in-out infinite;
+        }
+
+        @keyframes glowing {
+            0% { border-color: #00ddff; box-shadow: 0 0 5px #00ddff; }
+            50% { border-color: #00ff00; box-shadow: 0 0 20px #00ff00; }
+            100% { border-color: #00ddff; box-shadow: 0 0 5px #00ddff; }
+            
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+        .container h1 {
+            margin-top: 0;
+        }
+
+        .container p {
+            margin-bottom: 10px;
         }
     }
-</script>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Information</h1>
+        <p>Name: jojotmz</p>
+        <p>Email: tomazj@usi.ch</p>
+        <p>Phone: On Demand</p>
+        <p>Address: Slack/Meetings</p>
+    </div>
 
 
 </body>
