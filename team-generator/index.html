@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volleyball Team Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Volleyball Team Generator</h1>
+
+<h3>Select Players Available Today:</h3>
+<form id="playerForm">
+  <div class="player-selection">
+    <label><input type="checkbox" value="Alice"> Alice</label>
+    <label><input type="checkbox" value="Bob"> Bob</label>
+    <label><input type="checkbox" value="Charlie"> Charlie</label>
+    <label><input type="checkbox" value="David"> David</label>
+    <label><input type="checkbox" value="Eve"> Eve</label>
+    <label><input type="checkbox" value="Frank"> Frank</label>
+    <label><input type="checkbox" value="Grace"> Grace</label>
+    <label><input type="checkbox" value="Hannah"> Hannah</label>
+    <label><input type="checkbox" value="Isabella"> Isabella</label> <!-- New player -->
+    <label><input type="checkbox" value="Jack"> Jack</label> <!-- New player -->
+    <label><input type="checkbox" value="Liam"> Liam</label> <!-- New player -->
+    <label><input type="checkbox" value="queen"> Queen</label> <!-- New player -->
+  </div>
+</form>
+
+<button onclick="generateTeams()">Generate Teams</button>
+
+<div id="teams"></div>
+
+<footer>
+  <p>Lease reach out to me if you find any bugs! @jotmz on Discord</p>
+</footer>
+
+<!-- Link to external JavaScript file -->
+<script src="script.js"></script>
+</body>
+</html>
