@@ -1,7 +1,6 @@
-/* General body and layout */
 body {
-    background-color: #2c2f3d; /* Dark background */
-    color: #f0f0f0; /* Light text */
+    background-color: #2c2f3d;
+    color: #f0f0f0;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -12,7 +11,6 @@ body {
     padding-bottom: 50px;
 }
 
-/* Rainbow animation */
 @keyframes rainbow {
     0% { color: red; }
     14% { color: orange; }
@@ -25,12 +23,11 @@ body {
 }
 
 .rainbow {
-    animation: rainbow 3s linear infinite;
+    animation: rainbow 5s linear infinite;
 }
 
-/* Footer styling */
 footer {
-    position: fixed; /* Fix it to the bottom of the page */
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -50,7 +47,6 @@ footer p:hover {
     color: #f0f0f0;
 }
 
-/* Other existing CSS */
 h1, h3, h2 {
     color: #f0f0f0;
     text-align: center;
@@ -61,24 +57,21 @@ label {
     font-size: 1.1em;
     margin: 5px 0;
     display: flex;
-    align-items: center; /* Align checkbox and text properly */
+    align-items: center;
 }
 
-/* Styling for checkbox and text */
 input[type="checkbox"] {
     margin-right: 10px;
 }
 
-/* Style the form to display checkboxes in two columns */
 .player-selection {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 20px; /* Space between items */
-    justify-items: start; /* Align the checkboxes to the left */
-    margin-bottom: 20px; /* Space below the form */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: start;
+    margin-bottom: 20px;
 }
 
-/* Button styling */
 button {
     background-color: #4CAF50;
     color: white;
@@ -109,21 +102,44 @@ button:hover {
     margin-bottom: 20px;
 }
 
-/* Media Query for smaller screens */
+.team-set p {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.team-set strong {
+    font-weight: bold;
+}
+
 @media (max-width: 600px) {
+    h1, h3 {
+        font-size: 1.5em;
+    }
+
     label {
         font-size: 1em;
+        margin: 5px 0;
     }
+
     button {
         font-size: 1em;
         padding: 8px 16px;
     }
+
     #teams p {
         font-size: 1em;
     }
 
-    /* Adjust grid layout for smaller screens */
+    .team-set p {
+        font-size: 1em;
+    }
+
     .player-selection {
-        grid-template-columns: 1fr; /* One column on small screens */
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
     }
 }
