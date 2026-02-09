@@ -1,62 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Bottega Tomazoni</title>
 </head>
 <body>
-    <title>Personal Information</title>
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 100;
-        }
 
-        .container {
-            width: 400px;
-            padding: 20px;
-            text-align: center;
-            animation: glowing 2s ease-in-out infinite;
-        }
+    <header>
+        <div class="brand">
+            <h1>Bottega Tomazoni</h1>
+            <p class="tagline">3D Printed & Hand-Painted Creations</p>
+        </div>
+        <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="instagram-link">
+            <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+            @johntomazoni
+        </a>
+    </header>
 
-        @keyframes glowing {
-            0% { border-color: #00ddff; box-shadow: 0 0 5px #00ddff; }
-            50% { border-color: #00ff00; box-shadow: 0 0 20px #00ff00; }
-            100% { border-color: #00ddff; box-shadow: 0 0 5px #00ddff; }
-            
-        }
+    <nav class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="miniature">Miniatures</button>
+        <button class="filter-btn" data-filter="figure">Figures</button>
+        <button class="filter-btn" data-filter="decoration">Decoration</button>
+    </nav>
 
-        @media (max-width: 600px) {
-            .container {
-                width: 90%;
-            }
+    <main class="catalog">
+        <!-- Example product cards — replace images and details with your own -->
 
-        .container h1 {
-            margin-top: 0;
-        }
+        <article class="product-card" data-category="miniature">
+            <div class="product-image">
+                <span class="placeholder-label">Photo</span>
+            </div>
+            <div class="product-info">
+                <h2>Product Name</h2>
+                <p class="product-category">Miniature</p>
+                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
+                    Order on Instagram
+                </a>
+            </div>
+        </article>
 
-        .container p {
-            margin-bottom: 10px;
-        }
-    }
+        <article class="product-card" data-category="figure">
+            <div class="product-image">
+                <span class="placeholder-label">Photo</span>
+            </div>
+            <div class="product-info">
+                <h2>Product Name</h2>
+                <p class="product-category">Figure</p>
+                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
+                    Order on Instagram
+                </a>
+            </div>
+        </article>
 
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Personal Information</h1>
-        <p>Name: Not currently looking for a position</p>
-        <!-- <p>Email: tomazj@usi.ch</p> -->
-        <p>Email: Not currently looking for a position</p>
-        <p>Phone: On Demand</p>
-        <p>Address: Any Popular VoIP</p>
-        <p><a href="team-generator/index.html">Volleyball Team Generator (personal use)</a></p>
-    </div>
+        <article class="product-card" data-category="decoration">
+            <div class="product-image">
+                <span class="placeholder-label">Photo</span>
+            </div>
+            <div class="product-info">
+                <h2>Product Name</h2>
+                <p class="product-category">Decoration</p>
+                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
+                    Order on Instagram
+                </a>
+            </div>
+        </article>
 
+        <article class="product-card" data-category="miniature">
+            <div class="product-image">
+                <span class="placeholder-label">Photo</span>
+            </div>
+            <div class="product-info">
+                <h2>Product Name</h2>
+                <p class="product-category">Miniature</p>
+                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
+                    Order on Instagram
+                </a>
+            </div>
+        </article>
+
+        <article class="product-card" data-category="figure">
+            <div class="product-image">
+                <span class="placeholder-label">Photo</span>
+            </div>
+            <div class="product-info">
+                <h2>Product Name</h2>
+                <p class="product-category">Figure</p>
+                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
+                    Order on Instagram
+                </a>
+            </div>
+        </article>
+
+        <article class="product-card" data-category="decoration">
+            <div class="product-image">
+                <span class="placeholder-label">Photo</span>
+            </div>
+            <div class="product-info">
+                <h2>Product Name</h2>
+                <p class="product-category">Decoration</p>
+                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
+                    Order on Instagram
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>Interested in a custom piece? Reach out on
+            <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener">Instagram</a>.
+        </p>
+        <p class="copyright">&copy; 2026 Bottega Tomazoni</p>
+    </footer>
+
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
