@@ -33,86 +33,35 @@
         <button class="filter-btn" data-filter="decoration">Decoration</button>
     </nav>
 
+    <section class="portfolio-heading">
+        <h2>Portfolio</h2>
+    </section>
+
     <main class="catalog">
-        <!-- Example product cards — replace images and details with your own -->
 
         <article class="product-card" data-category="miniature">
             <div class="product-image">
-                <span class="placeholder-label">Photo</span>
+                <img src="images/blade_champion_front.jpg" alt="Blade Champion — Front View" class="active">
+                <img src="images/blade_champion_back.jpg" alt="Blade Champion — Back View">
+                <button class="img-prev" aria-label="Previous image">&lsaquo;</button>
+                <button class="img-next" aria-label="Next image">&rsaquo;</button>
             </div>
             <div class="product-info">
-                <h2>Product Name</h2>
+                <h2>Blade Champion</h2>
                 <p class="product-category">Miniature</p>
-                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
-                    Order on Instagram
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card" data-category="figure">
-            <div class="product-image">
-                <span class="placeholder-label">Photo</span>
-            </div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="product-category">Figure</p>
-                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
-                    Order on Instagram
-                </a>
             </div>
         </article>
 
         <article class="product-card" data-category="decoration">
             <div class="product-image">
-                <span class="placeholder-label">Photo</span>
+                <img src="images/porta_vela.jpg" alt="Candle Holder">
             </div>
             <div class="product-info">
-                <h2>Product Name</h2>
+                <h2>Candle Holder</h2>
                 <p class="product-category">Decoration</p>
-                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
-                    Order on Instagram
-                </a>
             </div>
         </article>
 
-        <article class="product-card" data-category="miniature">
-            <div class="product-image">
-                <span class="placeholder-label">Photo</span>
-            </div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="product-category">Miniature</p>
-                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
-                    Order on Instagram
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card" data-category="figure">
-            <div class="product-image">
-                <span class="placeholder-label">Photo</span>
-            </div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="product-category">Figure</p>
-                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
-                    Order on Instagram
-                </a>
-            </div>
-        </article>
-
-        <article class="product-card" data-category="decoration">
-            <div class="product-image">
-                <span class="placeholder-label">Photo</span>
-            </div>
-            <div class="product-info">
-                <h2>Product Name</h2>
-                <p class="product-category">Decoration</p>
-                <a href="https://instagram.com/johntomazoni" target="_blank" rel="noopener" class="buy-btn">
-                    Order on Instagram
-                </a>
-            </div>
-        </article>
     </main>
 
     <footer>
@@ -121,6 +70,11 @@
         </p>
         <p class="copyright">&copy; 2026 Bottega Tomazoni</p>
     </footer>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    </div>
 
     <script>
         const filterBtns = document.querySelectorAll('.filter-btn');
@@ -140,6 +94,41 @@
                     }
                 });
             });
+        });
+
+        // Image carousel for multi-image cards
+        document.querySelectorAll('.img-prev, .img-next').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const container = btn.closest('.product-image');
+                const imgs = container.querySelectorAll('img');
+                const current = container.querySelector('img.active');
+                const idx = Array.from(imgs).indexOf(current);
+                const dir = btn.classList.contains('img-next') ? 1 : -1;
+                const next = (idx + dir + imgs.length) % imgs.length;
+                current.classList.remove('active');
+                imgs[next].classList.add('active');
+            });
+        });
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.product-image img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('open');
+            });
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('open');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lightbox.classList.remove('open');
         });
     </script>
 
